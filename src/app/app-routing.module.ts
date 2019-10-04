@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'noticias',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    path: 'noticias',
+    loadChildren: () => import('./noticias/noticias.module').then(m => m.NoticiasPageModule)
   },
-  {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  }
+  { path: 'calendario', loadChildren: './calendario/calendario.module#CalendarioPageModule' },
+  { path: 'filtro', loadChildren: './filtro/filtro.module#FiltroPageModule' },
+  { path: 'facebook', loadChildren: './facebook/facebook.module#FacebookPageModule' },
+  { path: 'buscar', loadChildren: './buscar/buscar.module#BuscarPageModule' },
+  { path: 'noticia-detalle/:id', loadChildren: './noticia-detalle/noticia-detalle.module#NoticiaDetallePageModule' },
+  { path: 'noticias/:id', loadChildren: './noticias/noticias.module#NoticiasPageModule' },
 ];
 
 @NgModule({
